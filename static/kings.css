@@ -1,0 +1,65 @@
+/*Main site*/
+
+
+
+/*Container*/
+#container-div{
+    width:1280px;
+    min-height:800px;
+    margin: 0 auto 0 auto;
+    background-image:url('bg_image_wood.jpg');
+}
+
+/*Turn*/
+#turn{
+    width:200px;    
+    margin: 40 auto 0 auto;
+    padding-top:50px;
+}
+
+/*card*/
+#card{
+    width:350px;
+    min-height:400;
+    margin: 40 auto 0 auto;
+}
+
+#card img{
+    width:350;
+}
+
+#card h1{
+    padding:60 60 60 60;
+}
+
+/*Set up*/
+.set_up{
+    padding-top:100px;
+    margin: 40 auto 0 auto;
+    width:600px;
+}
+
+.setup input{
+    width:20px;
+}
+
+/*Rule*/
+#rule{
+    margin: 0 auto 0 auto;
+    width:150px;
+}
+
+/*help*/
+#help{
+    position:absolute;
+    height:100%;
+    width:100%;
+    background:white;
+    opacity:0.4;
+    
+}
+
+.opacity{
+    opacity:0.4;
+    filter:alpha(opacity=40); /* For IE8 and earlier */
+}

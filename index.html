@@ -1,0 +1,53 @@
+<!DOCTYPE>
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+<script src="static/kings.js"></script>
+<link href="static/kings.css" type="text/css" rel="stylesheet"/>
+
+</head>
+<body>
+    <section id="container">
+        <div id="container-div">
+            <button id="help_button"onclick="show_help()">?</button>
+            <div class="set_up">
+            </div>
+            <div onclick="hide_help()"id="help">
+              <h2>About kings cup</h2>
+              <p>
+                This is a drinking game that are supposed to create joy at a social gathering. It is NOT recommended to play this with alcohol!
+              </p>
+              <h2>This is how you set the game up</h2>
+              <ol>
+                <li>Find a big cup and set it on the table</li>
+                <li>Enter the amount of players</li>
+                <li>Enter the name of the players, it helps if you do it in the order you sit around the table</li>
+                <li>Assign rules to cards. BE CREATIVE</li>
+                <li>Start playing</li>
+              </ol>
+              
+              <h2>This is how you play</h2>
+              <ol>
+                <li>Draw a card using space, enter or by clicking in the card area.</li>
+                <li>If you get a king, you have to pure some of your drink into the cup. If you get the last king, you have to drink the cup</li>
+                <li>If you get for example a 2, doesn't matter what kind of suite, you have to obey that rule until the game is over</li>
+                <li>If you forget what rule is assigned to a card press "Remind me of this rule"</li>
+                <li>HAVE FUN!</li>
+              </ol>
+              <br/>
+              <br/>
+              <>
+            </div>
+            <div id="turn">
+            </div>
+            <div id="card" onclick="pull_card()">
+            </div>
+            <div id="count">
+            </div>
+            <div id="rule">
+                <button onclick="display_rule()">Remind me of this rule</button>                
+            </div>
+          </div>
+    </section>
+</body>
+</html>
