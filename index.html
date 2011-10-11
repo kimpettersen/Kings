@@ -10,6 +10,14 @@
     <section id="container">
         <div id="container-div">
             <button id="help_button"onclick="show_help()">?</button>
+            <div id="welcome">
+              <img onclick="start()" src="static/title_img.png">
+              <div id="first_card">
+              <img onclick="start()" src="static/card_back.png">
+              </div>
+              <img onclick="start()" src="static/button_startgame.png">
+              <img onclick="show_help()" src="static/button_rules.png">
+            </div>
             <div class="set_up">
             </div>
             <div onclick="hide_help()"id="help">
@@ -36,16 +44,16 @@
               </ol>
               <br/>
               <br/>
-              <>
             </div>
             <div id="turn">
             </div>
-            <div id="card" onclick="pull_card()">
+            <div class="card" onclick="pull_card()">
             </div>
             <div id="count">
             </div>
-            <div id="rule">
-                <button onclick="display_rule()">Remind me of this rule</button>                
+            <div id="rule" class="button">
+                <img src="static/button_nextcard.png" onclick="pull_card()" />
+                <img src="static/button_remindme.png" onclick="display_rule()" />
             </div>
           </div>
     </section>

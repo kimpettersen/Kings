@@ -1,13 +1,11 @@
 var turn_counter = 0;
 var game = false;
 var kings = 0;
-var is_first = true;
-
 $(document).ready(function(){
     $('#help_button').hide();
     $('#help').hide();
     $('#turn').hide();
-    $('.card').hide();
+    $('#card').hide();
     $('#count').hide();
     $('#rule_text').hide();
     $('#rule').hide();
@@ -20,12 +18,13 @@ $(document).ready(function(){
         }
       }
     });
-});
-
+})
+//style="width:339px;height:70px;padding:20px;font-size:30px;color:#747474;" 
 function start(){
     $('#welcome').hide();
-    //lazy Kim should move this to the CSS file...
-    $('.set_up').append('<input type="text" class="input_field" id="num" value="Number of players"/><img class="setup_button" onclick="set_players()" src="static/button_proceed.png">');
+    $('.set_up').append('<input type="text" class="input_field" id="num" 
+    value="Number of players"/>
+    <img onclick="set_players()"style="padding-top:20px;"src="static/button_proceed.png">');
 }
 function hide_help(){
     $('#help').hide();
@@ -42,17 +41,13 @@ function show_help(){
 function set_players(){
         var number = document.getElementById('num').value;
         number = parseInt(number);
-        if (isNaN(number)){
-            
-            start_game();
-        }
         window.number_of_players = number;
         $('.set_up').empty();
         for(i = 0; i < window.number_of_players; i++){
             var player_number = i + 1;
             $('.set_up').append('<div class="player_names"><input class="input_field" value="Player #' + player_number + '" type="text" id="' + i + '" /></div>');
         }
-        $('.set_up').append('<img id="proceed_button" class="setup_button" src="static/button_proceed.png" onclick=register_players()>');
+        $('.set_up').append('<img id="proceed_button" src="static/button_proceed.png" onclick=register_players()>');
 }
 
 function register_players(){
@@ -66,51 +61,54 @@ function register_players(){
 
 function set_up_rules(){
     $('.set_up').empty();
-    //rules = new Array('Custom', 'ten chen','five hewil','eigth hate','You demand')
-    for (i = 0; i < 12; i++){
-        if (i == 0){
-            name = 'Ace';
-        }
-        if (i == 10){
+    rules = new Array('Custom', 'ten chen','five hewil','eigth hate','You demand')
+    for (i = 0; i < 13; i++){
+        if (i == 11){
             name = 'Jack';
         }
-        else if (i == 11){
+        else if (i == 12){
             name = 'Queen';
         }
-        
         else{
-            name = 'card ' + (i + 1);
-        }
-        $('.set_up').append('<input value="Rule for ' + name + '" class="input_field" id="other' + i + '" type="text"/>');
+            name = i;        }
+
+        $('.set_up').append('<div class="rule_dropdown"><h2>Rule for the ' + name + '</h2><select id="rule' + i + '" name="rule' + i + '">');
+      for(j = 0; j < rules.length; j++){
+            $('#rule'+i).append('<option>' + rules[j] + '</option>');
+      }
+      $('.set_up').append('</select>');
+      $('.set_up').append('<input id="other' + i + '" type="text"/></div>')
     }   
-    $('.set_up').append('<br/><img class="setup_button" src="static/button_startgame.png" onclick="set_rules()">');
+    $('.set_up').append('<br/><button onclick="set_rules()">Start the game</button>');
 }
 
 function set_rules(){
     rule_set = new Array();
-    for (i = 0; i < 12; i++){
-        card_rule = document.getElementById('other' + i).value;
-        rule_set[i] = card_rule;
+    for (i = 0; i < 13; i++){
+        opt = document.getElementById('rule' + i).value;
+        if (opt == 'Custom'){
+            opt = document.getElementById('other' + i).value;
+        }
+        rule_set[i] = opt;
     }
-    rule_set[12] = 'KINGS CUP!!'
-    window.rule_set = rule_set; 
+    rule_set[13] = 'KINGS CUP!!'
+    window.rule_set = rule_set;    
     start_game();
 }
 
 function start_game(){
-    new_deck();
-    pull_card();
+    new_deck();    
     $('#help_button').hide();
     $('.set_up').hide();
     $('#turn').show();
-    $('.card').show();
-    /*
+    $('#card').show();
     turn = get_next_turn()
-    
-    $('.card').append('<h1>Click here to start</h1>')
-    
+    if(turn != undefined){
+       $('#turn').append(turn + ' get to start');
+    }
+    $('#card').append('<h1>Click here to start</h1>')
     game = true;
-    */
+    
 }
 
 
@@ -131,20 +129,17 @@ function display_card(card){
         }
     }
     //need to be called to check if it is the last king
-    $('#rule').hide();
-    $('.card').empty();
-    $('.card').append('<img alt="' + card + '"src=/static/cards/' + card + '.png />');
+    get_rule(card, get_current_turn());
+    $('#rule').show();
+    $('#card').empty();
+    $('#card').append('<img alt="' + card + '"src=/static/cards/' + card + '.png />');
     $('#turn').empty();
-    
     turn = get_next_turn()
-    current_turn = get_current_turn()
     if(turn != undefined){
-        $('#turn').append('<h2>Current player: ' + current_turn + '</h2><h2>Next player: ' + turn + '</h2>');
+        $('#turn').append('Next player to draw is: ' + turn);
     }
         //Not used for anything right now..
     window.count -= 1;
-    $('#rule').show();
-    
 }
 
 function get_rule(card, player){
@@ -161,21 +156,21 @@ function get_rule(card, player){
             }
         }
     }
-    return window.rule_set[num - 1];
+    return window.rule_set[num];
 }
 
 function get_next_turn(){
-    //add try catch on get number
-    if (turn_counter <= (window.players.length)){
+    if (turn_counter == window.players.length){
         turn_counter = 0;
-    }    
-    turn_counter += 1;
+    }
+
     player = window.players[turn_counter];
+    turn_counter += 1;
     return player;     
 }
 
 function get_current_turn(){
-    return window.players[turn_counter - 1]
+    return window.players[turn_counter-1]
 }
 
 function display_rule(){

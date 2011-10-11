@@ -1,54 +1,68 @@
 /*Main site*/
 
+h2{
+    font-family:helvetica;
 
+}
 
 /*Container*/
 #container-div{
-    width:1280px;
-    min-height:800px;
+    width:960px;
+    min-height:650px;
     margin: 0 auto 0 auto;
-    background-image:url('bg_image_wood.jpg');
+    background-image:url('static/bg_image_wood.png');
 }
 
 /*Turn*/
 #turn{
-    width:200px;    
-    margin: 40 auto 0 auto;
+    width:332px;
+    margin: 0 auto 0 auto;
     padding-top:50px;
 }
 
-/*card*/
-#card{
-    width:350px;
-    min-height:400;
-    margin: 40 auto 0 auto;
-}
-
-#card img{
-    width:350;
-}
-
-#card h1{
-    padding:60 60 60 60;
-}
 
 /*Set up*/
 .set_up{
     padding-top:100px;
+    margin: 0 auto 0 auto;
+    width:332px;
+}
+
+.input_field{
+    width:339px;
+    height:70px;
+    padding:20px;
+    margin-bottom:10px;
+    font-size:30px;
+    color:#747474;"
+}
+
+.setup_button{
+    padding: 20 0 20 0;
+    width:332px;
+}
+
+/*card*/
+.card{
+    width:225px;
     margin: 40 auto 0 auto;
-    width:600px;
 }
 
-.setup input{
-    width:20px;
+.card h1{
+    padding:60 60 60 60;
 }
 
-/*Rule*/
-#rule{
+.button{
+    width:332;
+    margin:20 auto 0 auto;
+}
+
+/*Rule
+rule{
     margin: 0 auto 0 auto;
     width:150px;
 }
-
+*/
 /*help*/
 #help{
     position:absolute;
@@ -62,4 +76,15 @@
 .opacity{
     opacity:0.4;
     filter:alpha(opacity=40); /* For IE8 and earlier */
+}
+
+#welcome{
+    width:339px;
+    margin: 0 auto 0 auto;
+}
+
+#first_card {
+    width:225px;
+    margin:0 auto 20 auto;
+    
 }
