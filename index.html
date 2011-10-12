@@ -1,60 +1,59 @@
-<!DOCTYPE>
+<!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
+  
+  <title>Kings Cup Online</title>
+  
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
 <script src="static/kings.js"></script>
-<link href="static/kings.css" type="text/css" rel="stylesheet"/>
+<link href="static/kings.css" type="text/css" rel="stylesheet" >
 
 </head>
 <body>
-    <section id="container">
-        <div id="container-div">
-            <button id="help_button"onclick="show_help()">?</button>
-            <div id="welcome">
-              <img onclick="start()" src="static/title_img.png">
-              <div id="first_card">
-              <img onclick="start()" src="static/card_back.png">
-              </div>
-              <img onclick="start()" src="static/button_startgame.png">
-              <img onclick="show_help()" src="static/button_rules.png">
-            </div>
-            <div class="set_up">
-            </div>
-            <div onclick="hide_help()"id="help">
-              <h2>About kings cup</h2>
-              <p>
-                This is a drinking game that are supposed to create joy at a social gathering. It is NOT recommended to play this with alcohol!
-              </p>
-              <h2>This is how you set the game up</h2>
-              <ol>
-                <li>Find a big cup and set it on the table</li>
-                <li>Enter the amount of players</li>
-                <li>Enter the name of the players, it helps if you do it in the order you sit around the table</li>
-                <li>Assign rules to cards. BE CREATIVE</li>
-                <li>Start playing</li>
-              </ol>
+    <section class="container" id="container">
+        <section class="container" id="help" onclick="hide_help()">
+          <h2>About kings cup</h2>
+          <!--  Need to make this short and understandable... -->
+          <ol>
+            <li>Set up...</li>
+            <li>Then add rule</li>
+            <li>then play</li>
+          </ol>
+          <br>
+        </section>
+        <div id="game_components">
+            <aside id="help_button">
+              <img alt="show help button" onclick="show_help()"
+                  src="static/button_questionmark.png">
+            </aside>
+            
+            <section class="center" id="welcome_screen">
+                <img class="center" alt="logo" onclick="start()" src="static/title_img.png">
+                <img class="center" alt="back of the card deck" onclick="start()" src="static/card_back.png">
+                <img class="center button" alt="start game button" onclick="start()" src="static/button_startgame.png">
+                <img class="center button" alt="show rules " onclick="show_help()" src="static/button_rules.png">
+            </section>
+            
+            <section id="set_up" class="center set_up">
+              <!--  this is where all the content of the setup goes  -->            
+            </section>
+            
+
+            <section class="center" id="current_game">
+              <header class="center" id="turn">
+                <!--  This is the section where the information about which 
+                turn it is are supposed to go  -->
+              </header>
               
-              <h2>This is how you play</h2>
-              <ol>
-                <li>Draw a card using space, enter or by clicking in the card area.</li>
-                <li>If you get a king, you have to pure some of your drink into the cup. If you get the last king, you have to drink the cup</li>
-                <li>If you get for example a 2, doesn't matter what kind of suite, you have to obey that rule until the game is over</li>
-                <li>If you forget what rule is assigned to a card press "Remind me of this rule"</li>
-                <li>HAVE FUN!</li>
-              </ol>
-              <br/>
-              <br/>
+            <div class="center card" id="card" onclick="pull_card()">
+              <!--  where the actual card goes   -->
             </div>
-            <div id="turn">
+            
+            <div id="game_buttons" class="center">
+              <!--  The buttons for the actual card game goes here.  -->
             </div>
-            <div class="card" onclick="pull_card()">
-            </div>
-            <div id="count">
-            </div>
-            <div id="rule" class="button">
-                <img src="static/button_nextcard.png" onclick="pull_card()" />
-                <img src="static/button_remindme.png" onclick="display_rule()" />
-            </div>
+            </section>
           </div>
     </section>
 </body>
